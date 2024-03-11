@@ -1,2 +1,2 @@
 # Food-Store
-React 
+Food Store application is based on react framework 
