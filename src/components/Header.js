@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 //Header Component for Header Section
 const Header=()=>{
@@ -11,28 +12,28 @@ const Header=()=>{
 
     return (<>
 
-       <nav class="navbar navbar-expand-lg navbar-light header ">
-      <div class="container">
+       <nav className="navbar navbar-expand-lg navbar-light header ">
+      <div className="container">
         <img className="navbar-brand logo" src="https://img.freepik.com/premium-vector/good-food-logo-design_79169-10.jpg?w=400" alt="logo" />
 
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span className="navbar-toggler-icon"></span>
        </button>
-       <div class="collapse navbar-collapse" id="navbarNav">
-         <ul class="navbar-nav mx-2 ms-auto">
-           <li class="nav-item active">
-             <a class="nav-link" href="#">Home</a>
+       <div className="collapse navbar-collapse" id="navbarNav">
+         <ul className="navbar-nav mx-2 ms-auto">
+           <li className="nav-item active">
+             <Link className="nav-link" to= "/">Home</Link>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">About Us</a>
+           <li className="nav-item">
+             <Link className="nav-link" to="/about">About Us</Link>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Contact Us</a>
+           <li className="nav-item">
+             <Link className="nav-link" to="/contact-us">Contact Us</Link>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Cart<FontAwesomeIcon icon={faCartShopping}/></a>
+           <li className="nav-item">
+             <a className="nav-link" href="#">Cart<FontAwesomeIcon icon={faCartShopping}/></a>
            </li>
-           <li class="nav-item">
+           <li className="nav-item">
             {/*use Conditional Rendering for login and logout */}
             {/*{isLogin?(<button className="btn btn-primary" onClick={()=>setIsLoginIn(false)}>Logout</button  >):(<button className="btn btn-primary"onClick={()=>setIsLoginIn(true)} >Login</button  >)}*/}
             <button className="btn btn-primary" onClick={()=>{ btnName=="Login"?setBtnName("Logout"):setBtnName("Login")}}>{btnName}</button>
