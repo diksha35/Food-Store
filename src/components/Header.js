@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faCartPlus} from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faCartPlus, faCircle} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 //Header Component for Header Section
 const Header=()=>{
@@ -9,6 +10,10 @@ const Header=()=>{
   const [isLogin, setIsLoginIn]=useState(true);
  //2nd approch by passing string
  const [btnName, setBtnName]=useState("Login");
+  
+ const  onlineStaus=useOnlineStatus();
+
+
 
     return (<>
 
@@ -37,6 +42,10 @@ const Header=()=>{
             {/*use Conditional Rendering for login and logout */}
             {/*{isLogin?(<button className="btn btn-primary" onClick={()=>setIsLoginIn(false)}>Logout</button  >):(<button className="btn btn-primary"onClick={()=>setIsLoginIn(true)} >Login</button  >)}*/}
             <button className="btn btn-primary" onClick={()=>{ btnName=="Login"?setBtnName("Logout"):setBtnName("Login")}}>{btnName}</button>
+           </li>
+
+           <li className="nav-item">
+             <span className="nav-link" >Status : {onlineStaus? <FontAwesomeIcon style={{color:'#0dd917'}} icon={faCircle} />:<FontAwesomeIcon  style={{color:'red'}} icon={faCircle} />}</span>
            </li>
 
          </ul>
