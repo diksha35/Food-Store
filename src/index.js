@@ -1,13 +1,16 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
+import LoadingSpinner from "./components/LoadingSpinner";
+
+
 /**
  * Header
  * -Logo
@@ -25,7 +28,8 @@ import Contact from "./components/Contact";
  *- contact
  */
 
- 
+
+ const Grocery=lazy(()=>import('./components/Grocery'))
 
 const AppLayout = () => {
   return (
@@ -40,19 +44,34 @@ const AppLayout = () => {
 };
 
 const appRouter = createBrowserRouter([
-    { path: "/", element: <AppLayout /> , 
-    children :[
-        {
-          path: "/", element : <Body/>
-        },
-      { 
-        path:"/about", element :<About/>
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
       },
-      {path:"/contact-us", element:<Contact/>}
-    ]
-    ,errorElement:<Error/>},
-   
-  ]);
+      {
+        path: "/gmart",
+        element: <Suspense fallback={<LoadingSpinner/>}><Grocery /></Suspense>,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+         path: "/contact-us",
+         element: <Contact /> 
+    },
+      {
+         path: "/restaurant/:resId",
+         element: <RestaurantMenu /> 
+        },
+    ],
+    errorElement: <Error />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter}></RouterProvider>)
+root.render(<RouterProvider router={appRouter}></RouterProvider>);
