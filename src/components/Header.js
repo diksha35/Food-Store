@@ -29,7 +29,10 @@ const Header=()=>{
            <li className="nav-item active">
              <Link className="nav-link" to= "/">Home</Link>
            </li>
-           <li className="nav-item">
+           <li className="nav-item active">
+             <Link className="nav-link" to= "/gmart">GMart</Link>
+           </li>
+          <li className="nav-item">
              <Link className="nav-link" to="/about">About Us</Link>
            </li>
            <li className="nav-item">
