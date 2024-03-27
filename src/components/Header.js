@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faCartPlus, faCircle} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useOnlineStatus from '../utils/useOnlineStatus';
+import useOnlineStatus from '../utils/hook/useOnlineStatus';
 
 //Header Component for Header Section
 const Header=()=>{
